@@ -6,7 +6,9 @@ let controller = function() {
   let suffixURL = "&format=json&jsoncallback=?";
   //get value entered by user from textbox
   let flickrTag = $("input").val();
+  console.log(flickrTag);
   let requestURL = prefixURL + flickrTag + suffixURL;
+  console.log(requestURL);
 
   //clear old photos
   $(".photos").html("");
@@ -34,12 +36,12 @@ let controller = function() {
     });
 
   });
-  window.addEventListener("load", function() {
-    //select the button and register the handler
-    document.querySelector("button").addEventListener("click",
-      controller);
-  });
 };
+window.addEventListener("load", function() {
+  //select the button and register the handler
+  let button = document.querySelector("button");
+  document.querySelector("button").addEventListener("click",
+    controller);
+});
 
-
-$(document).ready(controller);
+//$(document).ready(controller);
