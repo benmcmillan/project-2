@@ -11,37 +11,39 @@ let revWord = (string) => {
   return result;
 };
 
-console.log(revWord("Thurs"));
 
-//Req-A THIS ONE WORKS TOO I THINK
+//Req-A THIS ONE WORKS TOO I THINK JUST SUPPOSED TO REVERSE WORDS IN SAME SENTENCE ORDER
 let revWords1 = (sentence) => {
-  let arr = sentence.split("");
+  let arr = sentence.split(" ");
   let result = "";
   for (var i = 0; i < arr.length; i++) {
     //addrevWord in front of result
-    result = revWord(arr[i]) + result;
+    result = result + " " + revWord(arr[i]);
   }
+  result = result.trim();
   return result;
 };
 
-//Req-B THIS ONE WORKS
+//Req-B THIS ONE WORKS JUST SUPPOSED TO REVERSE WORDS IN SAME SENTENCE ORDER
 let revWords2 = (string) => {
-  let arr = string.split("");
+  let arr = string.split(" ");
   let result = "";
   arr.forEach((letter) => {
-    result = revWord(letter) + result;
+    result = result + " " + revWord(letter);
   });
+  result = result.trim();
   return result;
 };
 
 
-//Req-C This one works!
+//Req-C JUST SUPPOSED TO REVERSE WORDS IN SAME SENTENCE ORDER
 let revWords3 = (string) => {
-  let arr = string.split("");
+  let arr = string.split(" ");
   let result = "";
   for (let char of arr) {
-    result = revWord(char) + result;
+    result = result + revWord(char) + " ";
   }
+  result = result.trim();
   return result;
 };
 
@@ -49,15 +51,14 @@ let revWords3 = (string) => {
 
 //Req-XC THIS SHOULD RETURN FALSE AND NOT TRUE< NEED TO DEBUG
 let containsDuplicates = s => {
-  let cArr = [0, 0, 0, 0],
-    code;
-  for (let i in cArr) {
+  let cArr = new Array(26).fill(0);
+  for (let i in s) {
     code = s[i].toUpperCase().charCodeAt(0) - 65;
     //console.log(code);
     if (cArr[code] > 0) {
       return true;
     } else {
-      cArr[i]++;
+      cArr[code]++;
     }
   }
   return false;
